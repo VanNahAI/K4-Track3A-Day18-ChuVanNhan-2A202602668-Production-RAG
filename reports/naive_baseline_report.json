@@ -1,0 +1,17 @@
+{
+  "aggregate": {
+    "faithfulness": 0.7713636363636363,
+    "answer_relevancy": 0.24688761047944788,
+    "context_precision": 0.9083333332570834,
+    "context_recall": 0.825,
+    "metric_counts": {
+      "faithfulness": 20,
+      "answer_relevancy": 20,
+      "context_precision": 20,
+      "context_recall": 20
+    },
+    "failed_questions": []
+  },
+  "num_questions": 20,
+  "failures": []
+}

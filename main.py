@@ -56,6 +56,10 @@ def main():
         with open(prod_path, encoding="utf-8") as f:
             prod = json.load(f)
 
+        if naive.get("aggregate", {}).get("error") or prod.get("aggregate", {}).get("error"):
+            print("Không so sánh: đánh giá baseline hoặc production chưa hoàn tất. Xem error, metric_counts và failed_questions trong report.")
+            return
+
         print(f"\n{'Metric':<25} {'Basic':>8} {'Production':>12} {'Δ':>8}")
         print("-" * 55)
         for m in ["faithfulness", "answer_relevancy", "context_precision", "context_recall"]:

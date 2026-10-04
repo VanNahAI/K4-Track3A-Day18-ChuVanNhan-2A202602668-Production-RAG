@@ -1,4 +1,6 @@
 .env
+.venv/
+.venv-python314-backup/
 .DS_Store
 __pycache__/
 *.pyc

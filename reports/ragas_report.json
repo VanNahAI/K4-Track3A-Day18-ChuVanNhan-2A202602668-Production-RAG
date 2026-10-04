@@ -1,0 +1,88 @@
+{
+  "aggregate": {
+    "faithfulness": 0.8049999999999999,
+    "answer_relevancy": 0.6183490420759171,
+    "context_precision": 0.7958333332702082,
+    "context_recall": 0.7916666666666666,
+    "metric_counts": {
+      "faithfulness": 20,
+      "answer_relevancy": 20,
+      "context_precision": 20,
+      "context_recall": 20
+    },
+    "failed_questions": []
+  },
+  "num_questions": 20,
+  "failures": [
+    {
+      "question": "Nhân viên tạm ứng 15 triệu, sau 20 ngày mới thanh toán. Bị phạt bao nhiêu?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.41700583595475704,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template for direct answers"
+    },
+    {
+      "question": "Thông tin lương thuộc cấp độ phân loại dữ liệu nào?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.5280981547052658,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template for direct answers"
+    },
+    {
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng hoàn thành khóa học. Phải hoàn trả bao nhiêu?",
+      "worst_metric": "faithfulness",
+      "score": 0.5620450540235853,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten system prompt, set temperature to 0"
+    },
+    {
+      "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+      "worst_metric": "context_recall",
+      "score": 0.6274352262571596,
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25 keywords"
+    },
+    {
+      "question": "Lương thử việc của nhân viên Junior mức cao nhất là bao nhiêu?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.6310706185509343,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template for direct answers"
+    },
+    {
+      "question": "Mật khẩu phải có tối thiểu bao nhiêu ký tự?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.6568410643239816,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template for direct answers"
+    },
+    {
+      "question": "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.6861808382987107,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template for direct answers"
+    },
+    {
+      "question": "Nghỉ phép không lương 20 ngày cần ai phê duyệt?",
+      "worst_metric": "context_precision",
+      "score": 0.7084966401556787,
+      "diagnosis": "Too many irrelevant chunks",
+      "suggested_fix": "Add cross-encoder reranking or metadata filter"
+    },
+    {
+      "question": "Có cần kích hoạt xác thực đa yếu tố (MFA) không?",
+      "worst_metric": "context_recall",
+      "score": 0.7538880483744304,
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25 keywords"
+    },
+    {
+      "question": "Thâm niên bao nhiêu năm thì được cộng thêm ngày phép?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.7693232678989388,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template for direct answers"
+    }
+  ]
+}

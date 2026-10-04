@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- API Keys ---
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENAI_API_KEY = os.getenv("OLLAMA_API_KEY") or os.getenv("OPENAI_API_KEY", "")
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://ollama.com/v1")
+LLM_MODEL = os.getenv("LLM_MODEL", "gpt-oss:120b-cloud")
 
 # --- Qdrant ---
 QDRANT_HOST = "localhost"
@@ -27,6 +29,7 @@ SEMANTIC_THRESHOLD = 0.85
 BM25_TOP_K = 20
 DENSE_TOP_K = 20
 HYBRID_TOP_K = 20
+RRF_K = 60
 RERANK_TOP_K = 3
 
 # --- Paths ---

@@ -68,13 +68,13 @@ def run_query(query: str, search: HybridSearch, reranker: CrossEncoderReranker) 
     reranked = reranker.rerank(query, docs, top_k=RERANK_TOP_K)
     contexts = [r.text for r in reranked] if reranked else [r.text for r in results[:3]]
 
-    from config import OPENAI_API_KEY
+    from config import OPENAI_API_KEY, OPENAI_BASE_URL, LLM_MODEL
     if OPENAI_API_KEY and contexts:
         try:
             from openai import OpenAI
-            client = OpenAI()
+            client = OpenAI(api_key=OPENAI_API_KEY, base_url=OPENAI_BASE_URL)
             context_str = "\n\n".join(contexts)
-            resp = client.chat.completions.create(model="gpt-4o-mini", messages=[
+            resp = client.chat.completions.create(model=LLM_MODEL, messages=[
                 {"role": "system", "content": "Trả lời CHỈ dựa trên context. Nếu không có → nói 'Không tìm thấy.'"},
                 {"role": "user", "content": f"Context:\n{context_str}\n\nCâu hỏi: {query}"},
             ])
@@ -104,7 +104,10 @@ def evaluate_pipeline(search: HybridSearch, reranker: CrossEncoderReranker):
     t0 = time.time()
     print(f"\n[Eval] Running RAGAS (4 metrics × {len(test_set)} questions)...", flush=True)
     results = evaluate_ragas(questions, answers, all_contexts, ground_truths)
-    print(f"  ✓ RAGAS done ({time.time()-t0:.1f}s)", flush=True)
+    if results.get("error"):
+        print(f"  RAGAS: {results['error']} ({time.time()-t0:.1f}s)", flush=True)
+    else:
+        print(f"  ✓ RAGAS done ({time.time()-t0:.1f}s)", flush=True)
 
     print("\n" + "=" * 60)
     print("PRODUCTION RAG SCORES")
